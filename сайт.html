@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Urban AeroFarms: Инновационное Вертикальное Фермерство</title>
+    <style>
+        body { margin: 0; font-family: 'Roboto', sans-serif; background: #000; color: #fff; overflow-x: hidden; }
+        
+        /* Hero с видео */
+        .hero { 
+            height: 100vh; 
+            position: relative; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            text-align: center; 
+            overflow: hidden; 
+        }
+        .hero video { 
+            position: absolute; 
+            top: 0; left: 0; 
+            width: 100%; height: 100%; 
+            object-fit: cover; 
+            z-index: -1; 
+        }
+        .hero::before { 
+            content: ''; 
+            position: absolute; 
+            top: 0; left: 0; 
+            width: 100%; height: 100%; 
+            background: rgba(0, 0, 0, 0.5); 
+            z-index: 0; 
+        }
+        .hero-content { 
+            z-index: 1; 
+            opacity: 0; 
+            transform: translateY(50px); 
+        }
+        .hero h1 { 
+            font-family: 'Orbitron', sans-serif; 
+            font-size: 4em; 
+            text-shadow: 0 0 20px #00FF00, 0 0 40px #00FF00; 
+            animation: glow 2s infinite alternate; 
+            margin: 0 0 20px; 
+        }
+        @keyframes glow { 
+            from { text-shadow: 0 0 20px #00FF00, 0 0 40px #00FF00; } 
+            to { text-shadow: 0 0 30px #00FF00, 0 0 60px #00FF00; } 
+        }
+        .hero p { 
+            font-size: 1.6em; 
+            max-width: 900px; 
+            margin: 20px auto; 
+            line-height: 1.5;
+        }
+
+        .section { padding: 80px 20px; max-width: 1200px; margin: 0 auto; }
+        .section-title { font-family: 'Orbitron', sans-serif; color: #00FF00; font-size: 2.8em; text-align: center; margin-bottom: 50px; }
+
+        /* Две большие картинки проекта */
+        .project-gallery { 
+            display: flex; 
+            flex-wrap: wrap; 
+            justify-content: center; 
+            gap: 40px; 
+            margin-top: 40px; 
+        }
+        .project-gallery img { 
+            width: 420px; 
+            height: auto; 
+            object-fit: contain; 
+            border-radius: 15px; 
+            box-shadow: 0 0 20px #00FF00; 
+            transition: transform 0.3s; 
+        }
+        .project-gallery img:hover { transform: scale(1.05); }
+
+        /* Карточки технологий — ровные */
+        .cards { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+            gap: 30px; 
+        }
+        .card { 
+            background: #111; 
+            padding: 30px; 
+            border-radius: 15px; 
+            box-shadow: 0 0 20px #001AFF; 
+            transition: transform 0.3s; 
+            height: 280px; 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: space-between; 
+        }
+        .card:hover { transform: scale(1.05); }
+        .card h3 { margin-top: 0; color: #00FF00; font-size: 1.5em; }
+
+        /* Галерея — 6 картинок одинакового размера */
+        .gallery { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); 
+            gap: 30px; 
+            justify-items: center; 
+        }
+        .gallery img { 
+            width: 400px; 
+            height: 300px; 
+            max-width: 100%; 
+            object-fit: cover; 
+            border-radius: 15px; 
+            box-shadow: 0 0 15px #00FF00; 
+            transition: transform 0.3s; 
+        }
+        .gallery img:hover { transform: scale(1.05); }
+
+        .benefits ul { list-style: none; padding: 0; max-width: 900px; margin: 0 auto; }
+        .benefits li { margin: 30px 0; font-size: 1.4em; line-height: 1.6; text-align: center; }
+        .benefits strong { color: #00FF00; }
+
+        .investors { background: #111; padding: 60px; border-radius: 20px; text-align: center; }
+        .investors p { max-width: 900px; margin: 0 auto 40px; font-size: 1.3em; line-height: 1.6; }
+        form { display: flex; flex-direction: column; max-width: 800px; margin: 0 auto; }
+        input, textarea { margin-bottom: 20px; padding: 15px; border-radius: 10px; border: 1px solid #00FF00; background: #222; color: #fff; font-size: 1.1em; }
+        button { padding: 15px; background: #00FF00; color: #000; font-weight: bold; border: none; border-radius: 10px; cursor: pointer; transition: background 0.3s; }
+        button:hover { background: #00CC00; }
+
+        footer { text-align: center; padding: 30px; background: #111; margin-top: 50px; }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Orbitron:wght@700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
+</head>
+<body>
+
+    <!-- Hero с видео -->
+    <section class="hero">
+        <video autoplay muted loop playsinline>
+            <source src="video.mp4" type="video/mp4"> <!-- Здесь имя твоего видео файла -->
+            Ваш браузер не поддерживает видео.
+        </video>
+        <div class="hero-content">
+            <h1>Urban AeroFarms: Трансформируем<br>Городские Стены в Зеленые Сады</h1>
+            <p>Инновационная платформа вертикального фермерства с ИИ, дронами и возобновляемой энергией.<br>Высокий ROI в растущем рынке урбан-агро.</p>
+        </div>
+    </section>
+
+    <!-- Две большие картинки проекта -->
+    <section id="project" class="section">
+        <h2 class="section-title">Визуализация Проекта</h2>
+        <p>Urban AeroFarms — прорывная технология вертикальной аэропоники, интегрируемая в фасады зданий. Превращаем пустующие стены в продуктивные фермы для свежих овощей с минимальными затратами.</p>
+        <div class="project-gallery">
+            <img src="image8.jpg" alt="Вертикальная ферма 1">
+            <img src="image9.jpg" alt="Вертикальная ферма 2">
+        </div>
+    </section>
+
+    <!-- Ключевые технологии -->
+    <section id="tech" class="section">
+        <h2 class="section-title">Ключевые Технологии</h2>
+        <div class="cards">
+            <div class="card">
+                <h3>Аэропоника</h3>
+                <p>Эффективное распыление питательных веществ в виде тумана, экономя 95% воды по сравнению с традиционным земледелием.</p>
+            </div>
+            <div class="card">
+                <h3>ИИ-Мониторинг</h3>
+                <p>Машинное обучение для оптимизации роста: анализ данных с сенсоров (влажность, CO2, свет) в реальном времени.</p>
+            </div>
+            <div class="card">
+                <h3>Дроны и Роботы</h3>
+                <p>Автономные дроны для инспекции, сбора урожая и обработки растений, минимизируя человеческий труд.</p>
+            </div>
+            <div class="card">
+                <h3>Возобновляемая Энергия</h3>
+                <p>Интеграция солнечных панелей и ветряков для самоподдержки системы, снижая энергозатраты на 70%.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Преимущества -->
+    <section id="benefits" class="section benefits">
+        <h2 class="section-title">Преимущества</h2>
+        <ul>
+            <li><strong>Экологичность:</strong> Локальное производство без пестицидов и транспортного следа.</li>
+            <li><strong>Экономика:</strong> Урожайность в 10 раз выше, низкие OPEX за счёт автоматизации.</li>
+            <li><strong>Для городов:</strong> Очистка воздуха, эстетика, снижение углеродного следа.</li>
+            <li><strong>Для жителей:</strong> Снижение расходов на отопление и электроэнергию.</li>
+            <li><strong>Для потребителей:</strong> Свежие овощи с быстрой доставкой.</li>
+        </ul>
+    </section>
+
+    <!-- Галерея 6 картинок -->
+    <section id="gallery" class="section">
+        <h2 class="section-title">Визуализация Проекта</h2>
+        <div class="gallery">
+            <img src="image1.jpg" alt="Визуализация 1">
+            <img src="image2.jpg" alt="Визуализация 2">
+            <img src="image3.jpg" alt="Визуализация 3">
+            <img src="image4.jpg" alt="Визуализация 4">
+            <img src="image5.jpg" alt="Визуализация 5">
+            <img src="image6.jpg" alt="Визуализация 6">
+        </div>
+    </section>
+
+    <!-- Инвесторы -->
+    <section id="investors" class="section investors">
+        <h2 class="section-title">Возможности для Инвесторов</h2>
+        <p>Ищем seed-инвестиции для пилотного проекта. Потенциал доминирования на рынке урбан-агро.<br>Доступен pitch deck (ROI 30-50%, окупаемость ~18 месяцев).</p>
+        <form>
+            <input type="text" placeholder="Ваше Имя">
+            <input type="email" placeholder="Ваш Email">
+            <textarea placeholder="Сообщение" rows="6"></textarea>
+            <button type="submit">Связаться с Командой</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>© 2026 Urban AeroFarms. Все права защищены.</p>
+    </footer>
+
+    <script>
+        gsap.to(".hero-content", { duration: 1.5, y: 0, opacity: 1, ease: "power3.out", delay: 0.5 });
+        gsap.from(".card", { duration: 1, stagger: 0.2, y: 50, opacity: 0, scrollTrigger: { trigger: "#tech", start: "top 80%" } });
+        gsap.from(".gallery img", { duration: 1, stagger: 0.1, scale: 0.8, opacity: 0, scrollTrigger: { trigger: "#gallery", start: "top 80%" } });
+    </script>
+</body>
+</html>
